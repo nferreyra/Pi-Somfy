@@ -5,6 +5,7 @@ import traceback
 import pigpio
 import sys
 import argparse
+import os
 
 TXGPIO = 4  # 433.42 MHz emitter on GPIO 4
 frame = bytearray(7)
@@ -19,8 +20,9 @@ def button(x):
 
 def send_command(blindId, button):  # Sending a frame
    checksum = 0
+   data_path = os.path.dirname(os.path.abspath(__file__)) + "/blinds/"
 
-   with open("blinds/" + blindId + ".txt", 'r') as file:  # the files are un a subfolder "blinds"
+   with open(data_path + blindId + ".txt", 'r') as file:  # the files are un a subfolder "blinds"
       data = file.readlines()
 
    teleco = int(data[0], 16)
@@ -30,7 +32,7 @@ def send_command(blindId, button):  # Sending a frame
    print hex(teleco)
    print code
 
-   with open("blinds/" + blindId + ".txt", 'w') as file:
+   with open(data_path + blindId + ".txt", 'w') as file:
       file.writelines(data)
 
    pi = pigpio.pi()  # connect to Pi
