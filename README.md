@@ -9,8 +9,8 @@ The remote address and rolling code (incremented every time you send a frame) ar
 
 Usage
 ````
-# somfy.py [-h] --blind BLIND --action {up,down,stop,prog}
+# somfy.py [-h] --blind BLIND --action {open,close,stop,prog}
 
-# python somfy.py --blind 1 --action down
+# python somfy.py --blind 1 --action close
 ````
 
