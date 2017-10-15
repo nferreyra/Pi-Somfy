@@ -12,8 +12,8 @@ frame = bytearray(7)
 
 def button(x):
     return {
-        'up': 2,
-        'down': 4,
+        'open': 2,
+        'close': 4,
         'stop': 1,
         'prog': 8
     }.get(x, 1)    # 1 is default if x not found
@@ -151,8 +151,8 @@ def parse_args():
     parser.add_argument('--blind', type=str, required=True, default='0',
                         help='Blind ID to control')
     parser.add_argument('--action', type=str, required=True, default='stop',
-                        choices=['up', 'down', 'stop', 'prog'],
-                        help='Blind button (up, down, stop, prog)')
+                        choices=['open', 'close', 'stop', 'prog'],
+                        help='Blind button (open, close, stop, prog)')
     return parser.parse_args()
 
 def main(blind, action):
